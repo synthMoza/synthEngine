@@ -1,5 +1,7 @@
 # About
 The attempt to make a simple engine on C++ using graphical library SFML.
+# Usage
+Everything you need to include is the "Engine.h" header - it has all needed dependencies, and also the engine has a Makefile to compile itself.
 # Main Structure
 The program starts by creating object of type "Application" and calling the method "launch".
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/80SMtGX/Emr-ZG54chzc.jpg" alt="Emr-ZG54chzc" border="0"></a>
@@ -10,3 +12,6 @@ simultaneously - for example, you can create the pause menu by addind another sk
 # Features
 ## CircleShape
 Just a wrapper for a common CircleShape class in SFML - you can create and set its settings as you wish.
+
+# Progress
+Engine is very raw, it needs more time to add the minimum amount of features into it to make it usable.
