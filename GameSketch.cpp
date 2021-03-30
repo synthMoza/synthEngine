@@ -3,13 +3,14 @@
 using namespace se;
 
 GameSketch::GameSketch() {
-    // For example, create a circle of given options
-    // Circle* circle = create_circle(...);
-    // circle->setSomething(...);
-    // save circle
+    // Create a circle shape
     circle_shape_ = new CircleShape;
     circle_shape_->setRadius(20);
     circle_shape_->setPosition(100, 100);
+    circle_shape_->setFillColor(Color(255, 0, 0));
+    circle_shape_->setOutlineColor(Color(0, 255, 0));
+    circle_shape_->setOutlineThickness(3);
+
     std::cout << "GameSketch created!" << std::endl;
 }
 

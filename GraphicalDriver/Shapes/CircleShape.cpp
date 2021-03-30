@@ -2,21 +2,33 @@
 
 using namespace se;
 
-CircleShape::CircleShape() : x_ (0.f), y_ (0.f),  radius_ (0.f) {
-    object_ = new sf::CircleShape;
+CircleShape::CircleShape() {
+    circle_shape_ = new sf::CircleShape;
+    object_ = circle_shape_;
 }
 
 void CircleShape::setPosition(float x, float y) {
-    x_ = x;
-    y_ = y;
-    sf::CircleShape* object = static_cast<sf::CircleShape*>(object_);
-    object->setPosition({x_, x_});
+    circle_shape_->setPosition({x, y});
+}
+
+void CircleShape::setOrigin(float x, float y) {
+    circle_shape_->setOrigin({x, y});
 }
 
 void CircleShape::setRadius(float radius) {
-    radius_ = radius;
-    sf::CircleShape* object = static_cast<sf::CircleShape*>(object_);
-    object->setRadius(radius_);
+    circle_shape_->setRadius(radius);
+}
+
+void CircleShape::setFillColor(const Color& color) {
+    circle_shape_->setFillColor(color.getColor());
+}
+
+void CircleShape::setOutlineColor(const Color& color) {
+    circle_shape_->setOutlineColor(color.getColor());
+}
+
+void CircleShape::setOutlineThickness(float thickness) {
+    circle_shape_->setOutlineThickness(thickness);
 }
 
 CircleShape::~CircleShape() {
