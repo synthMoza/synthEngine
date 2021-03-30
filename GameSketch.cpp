@@ -6,10 +6,11 @@ GameSketch::GameSketch() {
     // Create a circle shape
     circle_shape_ = new CircleShape;
     circle_shape_->setRadius(20);
-    circle_shape_->setPosition(100, 100);
+    circle_shape_->setPosition({100, 100});
     circle_shape_->setFillColor(Color(255, 0, 0));
     circle_shape_->setOutlineColor(Color(0, 255, 0));
     circle_shape_->setOutlineThickness(3);
+    circle_shape_->setScale({5, 5});
 
     std::cout << "GameSketch created!" << std::endl;
 }

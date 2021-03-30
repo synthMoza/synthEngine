@@ -13,8 +13,6 @@ namespace se {
         void draw(GraphicalObject* graphical_object);
 
         ~GraphicalDriver();
-
-        //friend class GraphicalObject;
     };
 
     class GraphicalAssistant {

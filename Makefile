@@ -29,6 +29,9 @@ GraphicalDriver.o: GraphicalDriver/GraphicalDriver.cpp
 GraphicalObject.o: GraphicalDriver/GraphicalObject.cpp
 	$(CXX) -c -o $(BUILDDIR)/$@ $< $(CXXFLAGS)
 
+%.o: %.cpp
+	$(CXX) -c -o $(BUILDDIR)/$@ $< $(CXXFLAGS)
+
 # Targets to compile code to test this engine
 
 GameSketch.o: GameSketch.cpp
@@ -37,9 +40,7 @@ GameSketch.o: GameSketch.cpp
 CircleShape.o: GraphicalDriver/Shapes/CircleShape.cpp
 	$(CXX) -c -o $(BUILDDIR)/$@ $< $(CXXFLAGS)
 
-%.o: %.c
-	$(CXX) -c -o $(BUILDDIR)/$@ $< $(CXXFLAGS)
-
+# Delete all object files, executable file and *.d (include files)
 clean:
 	rm -rf game $(BUILDDIR)/*.o $(BUILDDIR)/*.d
 
