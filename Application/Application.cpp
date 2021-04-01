@@ -2,10 +2,13 @@
 
 using namespace se;
 
+// Static vector initializing (window resolution)
+Vector2u Application::resolution_ = Vector2u{0, 0};
+
 Application::Application(unsigned int resolution_width, unsigned int resolution_height, const std::string& title) :
-        resolution_height_ (resolution_height),
-        resolution_width_ (resolution_width),
-        window_ (new sf::RenderWindow{sf::VideoMode{resolution_width_, resolution_height_}, title}) {}
+        window_ (new sf::RenderWindow{sf::VideoMode{resolution_width, resolution_height}, title}) {
+    resolution_ = Vector2u{resolution_width, resolution_height};
+}
 
 void Application::launch() {
     // Create sketch driver and initialize sketch assistant

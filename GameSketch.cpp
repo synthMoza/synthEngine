@@ -25,8 +25,9 @@ void GameSketch::update() {
     float velocity = 0.01;
     unsigned long delta_time = TimeAssistant::getFrameTime() * 10e-3;
 
+    Vector2u resolution = GraphicalAssistant::getResolution();
     Vector2f tmp_pos = circle_shape_->getPosition();
-    if (tmp_pos.x_ <= 1200) {
+    if (tmp_pos.x_ <= resolution.x_) {
         // The circle must stop moving
         circle_shape_->move({velocity * delta_time, 0});
     }

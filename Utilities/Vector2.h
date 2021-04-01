@@ -19,18 +19,18 @@ namespace se {
         Vector2& operator=(const Vector2& rhs) {
             x_ = rhs.x_;
             y_ = rhs.y_;
-            return this;
+            return *this;
         }
         // Chained operators
         Vector2& operator+=(const Vector2& rhs) {
             x_ += rhs.x_;
             y_ += rhs.y_;
-            return this;
+            return *this;
         }
         Vector2& operator-=(const Vector2& rhs) {
             x_ += rhs.x_;
             y_ += rhs.y_;
-            return this;
+            return *this;
         }
         template <typename U>
         Vector2& operator*=(U value) {

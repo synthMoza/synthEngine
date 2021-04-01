@@ -16,3 +16,7 @@ void GraphicalDriver::draw(GraphicalObject* graphical_object) {
 void GraphicalAssistant::draw(GraphicalObject* graphical_object) {
     graphical_driver->draw(graphical_object);
 }
+
+Vector2u GraphicalAssistant::getResolution() {
+    return Application::getResolution();
+}
