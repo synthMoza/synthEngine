@@ -21,8 +21,15 @@ GameSketch::~GameSketch() {
 }
 
 void GameSketch::update() {
-    // For example, move circle to the right
-    // circle->moveSomehow(..);
+    // For example, move circle horizontally
+    float velocity = 0.01;
+    unsigned long delta_time = TimeAssistant::getFrameTime() * 10e-3;
+
+    Vector2f tmp_pos = circle_shape_->getPosition();
+    if (tmp_pos.x_ <= 1200) {
+        // The circle must stop moving
+        circle_shape_->move({velocity * delta_time, 0});
+    }
 }
 
 void GameSketch::draw() {

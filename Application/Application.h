@@ -4,6 +4,7 @@
 #include "../GraphicalDriver/GraphicalDriver.h"
 
 #include "../GraphicalLibrary.h"
+#include "../TimeDriver.h"
 
 namespace se {
     // The main class for launching the app

@@ -16,14 +16,18 @@ void Application::launch() {
     GraphicalDriver graphical_driver(window_);
     GraphicalAssistant::graphical_driver = &graphical_driver;
     
-    // Create the only one clock
-    sf::Clock clock;
+    // Create the TimeDriver
+    TimeDriver time_driver;
+    TimeAssistant::time_driver_ = &time_driver;
+
     unsigned long time = 0;
+    unsigned long old_time = 0;
     unsigned long frames = 0;
 
-    clock.restart();
+    time_driver.restartClock();
     while (window_->isOpen()) {
         sf::Event event;
+
         while (window_->pollEvent(event)) {
             // Catch all events
             switch (event.type) {
@@ -42,12 +46,17 @@ void Application::launch() {
         window_->display();
 
         // Count the passed time
-        time = clock.getElapsedTime().asMilliseconds();
-        if (time >= 1000) {
+        time = time_driver.getElapsedTime();
+        time_driver.setFrameTime(time - old_time);
+        old_time = time;
+
+        if (old_time >= 10e6) {
             // One second passed
             std::cout << "FPS: " << frames << std::endl;
             frames = 0;
-            clock.restart();
+            old_time = 0;
+            time = 0;
+            time_driver.restartClock();
         } else
             frames++; // the frames ended
     }
