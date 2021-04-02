@@ -19,9 +19,13 @@ void Application::launch() {
     GraphicalDriver graphical_driver(window_);
     GraphicalAssistant::graphical_driver = &graphical_driver;
     
-    // Create the TimeDriver
+    // Create the time driver
     TimeDriver time_driver;
     TimeAssistant::time_driver_ = &time_driver;
+
+    // Create the input driver
+    InputDriver input_driver;
+    InputAssistant::input_driver = &input_driver;
 
     unsigned long time = 0;
     unsigned long old_time = 0;
@@ -32,7 +36,9 @@ void Application::launch() {
         sf::Event event;
 
         while (window_->pollEvent(event)) {
-            // Catch all events
+            // Handle all events
+            input_driver.handleEvent(event);
+
             switch (event.type) {
                 case sf::Event::EventType::Closed:
                     window_->close();
@@ -47,13 +53,14 @@ void Application::launch() {
         sketch_driver.drawSketches();
 
         window_->display();
+        input_driver.updateKeys();
 
         // Count the passed time
         time = time_driver.getElapsedTime();
         time_driver.setFrameTime(time - old_time);
         old_time = time;
 
-        if (old_time >= 10e6) {
+        if (old_time >= 1000000) {
             // One second passed
             std::cout << "FPS: " << frames << std::endl;
             frames = 0;

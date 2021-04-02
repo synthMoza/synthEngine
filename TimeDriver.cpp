@@ -8,11 +8,11 @@ void TimeDriver::restartClock() {
 
 unsigned long TimeDriver::getElapsedTime(timeFormat format) {
 	switch (format) {
-	case S:
+	case SEC:
 		return clock_.getElapsedTime().asSeconds();
-	case MS:
+	case MSEC:
 		return clock_.getElapsedTime().asMilliseconds();
-	case US:
+	case USEC:
 		return clock_.getElapsedTime().asMicroseconds();
 	default:
 		throw std::runtime_error("Unknown time format!");
@@ -21,11 +21,11 @@ unsigned long TimeDriver::getElapsedTime(timeFormat format) {
 
 unsigned long TimeDriver::getFrameTime(timeFormat format) {
 	switch (format) {
-	case S:
+	case SEC:
 		return frame_time_ * 10e-6;
-	case MS:
+	case MSEC:
 		return frame_time_ * 10e-3;
-	case US:
+	case USEC:
 		return frame_time_;
 	default:
 		throw std::runtime_error("Unknown time format!");
@@ -34,13 +34,13 @@ unsigned long TimeDriver::getFrameTime(timeFormat format) {
 
 void TimeDriver::setFrameTime(unsigned long frame_time, timeFormat format) {
 	switch (format) {
-	case MS:
+	case MSEC:
 		frame_time_ = frame_time * 10e3;
 		break;
-	case US:
+	case USEC:
 		frame_time_ = frame_time;
 		break;
-	case S:
+	case SEC:
 	default:
 		throw std::runtime_error("Wrong time format for frame time!");
 		break;

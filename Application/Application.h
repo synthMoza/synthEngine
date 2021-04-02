@@ -6,6 +6,7 @@
 
 #include "../GraphicalLibrary.h"
 #include "../TimeDriver.h"
+#include "../InputDriver.h"
 
 namespace se {
     // The main class for launching the app

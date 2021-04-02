@@ -1,12 +1,10 @@
 #pragma once
 
 #include <vector>
+
 #include "GraphicalLibrary.h"
 
 namespace se {
-	const int keys_number = 59;
-	const int mkeys_number = 3;
-
 	// The list of all keys on the keyboard 
 	enum keys {
 		Unknown = -1, A = 0, B, C,
@@ -34,46 +32,91 @@ namespace se {
 		F3, F4, F5, F6,
 		F7, F8, F9, F10,
 		F11, F12, F13, F14,
-		F15, Pause, KeyCount, Dash = Hyphen,
-		BackSpace = Backspace, BackSlash = Backslash, SemiColon = Semicolon, Return = Enter
+		F15, Pause, KeyCount
 	};
 
 	// Structure that describes the state of the specific key
 	struct keyInfo {
 		keys code; // the code of the key
-		bool released; // true if the key was released, otherwise false
-		bool pressed; // true if the key is pressed, otherwise false
+		bool released; // true if the key was released in this frame, otherwise false
+		bool pressed; // true if the key is pressed in this frame, otherwise false
+		bool held; // true if the key is held, false if not
 
 		// Default constroctor for keyInfo
-		keyInfo() : code(Unknown), released(false), pressed(false) {}
+		keyInfo() : code(Unknown), released(false), pressed(false), held(false) {}
 	};
 
 	// List of all mouse keys
-	enum mkeys {Left, Right, Middle};
+	enum mkeys {LMouse, RMouse, Middle, MKeyCount};
 
 	struct mkeyInfo {
 		mkeys code; // the code of the mouse key
-		bool released; // true if the mouse key is released, otherwise false
-		bool pressed; // true if the mouse key is pressed, otherwise false
+		bool held; // true if the mouse key is held
+		bool released; // true if the mouse key is released in this frame
+		bool pressed; // true if the mouse key is pressed in this frame
 
-		mkeyInfo() : code(Left), released(false), pressed(false) {}
+		mkeyInfo() : code(LMouse), released(false), pressed(false), held(false) {}
 	};
+
+	const int keys_number = keys::KeyCount;
+	const int mkeys_number = mkeys::MKeyCount;
 
 	// The class to control keyboard and mouse
 	class InputDriver {
 		// Information about each key in the vector
 		std::vector<keyInfo> keys_info;
+		// Keys to be unpressed in the next frame
+		std::vector<keys> keys_unpress;
+		// Keys to be unreleased in the next frame
+		std::vector<keys> keys_unrelease;
+
 		// Information about each mouse key in the vector
 		std::vector<mkeyInfo> mkeys_info;
+		// MKeys to be unpressed in the next frame
+		std::vector<mkeys> mkeys_unpress;
+		// MKeys to be unreleased in the next frame
+		std::vector<mkeys> mkeys_unrelease;
 	public:
-		// Default constroctur for initializing all keys properly
+		// Default constructor for initializing all keys properly
 		InputDriver();
 		// Handle the given event to extract information about keys
 		void handleEvent(sf::Event& event);
+		// Update release/press state of ceratin keys
+		void updateKeys();
+
+		// Returns true if the key is held
+		bool isKeyHeld(keys key);
+		// Returns true if the key is pressed
+		bool isKeyPressed(keys key);
+		// Returns true if the key is released
+		bool isKeyReleased(keys key);
+
+		// Returns true if the mkey is held
+		bool isMKeyHeld(mkeys mkey);
+		// Returns true if the mkey is pressed
+		bool isMKeyPressed(mkeys mkey);
+		// Returns true if the mkey is released
+		bool isMKeyReleased(mkeys mkey);
 	};
 
 	// The class for user interface to keyboard and mouse
 	class InputAssistant {
+		static InputDriver* input_driver;
+	public:
+		// Returns true if the key is held
+		static bool isKeyHeld(keys key);
+		// Returns true if the key is pressed
+		static bool isKeyPressed(keys key);
+		// Returns true if the key is released
+		static bool isKeyReleased(keys key);
 
+		// Returns true if the mkey is held
+		static bool isMKeyHeld(mkeys mkey);
+		// Returns true if the mkey is pressed
+		static bool isMKeyPressed(mkeys mkey);
+		// Returns true if the mkey is released
+		static bool isMKeyReleased(mkeys mkey);
+
+		friend class Application;
 	};
 }
