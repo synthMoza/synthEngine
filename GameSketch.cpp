@@ -12,6 +12,13 @@ GameSketch::GameSketch() {
     circle_shape_->setOutlineThickness(3);
     circle_shape_->setScale({5, 5});
 
+    // Create a sprite
+    sprite_ = new Sprite;
+    unsigned int id = GraphicalAssistant::loadTexture("sprite.png");
+    sprite_->setTexture(id);
+    sprite_->setScale({0.5, 0.5});
+    sprite_->setPosition({200, 200});
+
     std::cout << "GameSketch created!" << std::endl;
 }
 
@@ -52,4 +59,5 @@ void GameSketch::update() {
 
 void GameSketch::draw() {
     GraphicalAssistant::draw(circle_shape_);
+    GraphicalAssistant::draw(sprite_);
 }
