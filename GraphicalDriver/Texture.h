@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GraphicalLibrary.h"
+#include "../GraphicalLibrary.h"
 #include <string>
 
 namespace se {

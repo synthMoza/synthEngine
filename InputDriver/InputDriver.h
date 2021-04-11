@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include "GraphicalLibrary.h"
+#include "../GraphicalLibrary.h"
 
 namespace se {
 	// The list of all keys on the keyboard 

@@ -2,7 +2,7 @@
 
 using namespace se;
 
-Sprite::Sprite() : sprite_(new sf::Sprite) {
+Sprite::Sprite() :  sprite_(new sf::Sprite) {
 	object_ = sprite_; // initialize sf::Drawable pointer
 	size_object_ = sprite_; // initialize sf::Transformable pointer
 }

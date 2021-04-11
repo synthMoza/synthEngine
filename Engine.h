@@ -17,10 +17,10 @@
 #include "GraphicalDriver/Shapes/CircleShape.h"
 
 // Input
-#include "InputDriver.h"
+#include "InputDriver/InputDriver.h"
 
 // Time
-#include "TimeDriver.h"
+#include "TimeDriver/TimeDriver.h"
 
 // Utilities
 #include "Utilities/Vector2.h"

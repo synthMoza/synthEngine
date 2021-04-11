@@ -2,8 +2,8 @@
 
 using namespace se;
 
-// TODO
-GraphicalObject::GraphicalObject() {}
+GraphicalObject::GraphicalObject() : 
+	object_ (nullptr), size_object_ (nullptr) {}
 
 GraphicalObject::~GraphicalObject() {}
 

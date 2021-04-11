@@ -1,27 +1,31 @@
 #pragma once
 
+#include "../GraphicalDriver/GraphicalDriver.h"
+
 #include <cstddef>
 #include <iostream>
+#include <vector>
 
 namespace se {
     // Forward declaration of the skecth driver
     class SketchDriver;
 
+    const int MAX_LAYERS = 128;
+
     // The scetch class for designing the certain part of the application that
     // contains related objects and methods
     class Sketch {
-        SketchDriver* sketch_driver;
-        std::size_t id_;
+        // Vector of all graphical objects of this sketch
+        std::vector<std::vector<GraphicalObject*>> graphical_objects_;
     public:
-        Sketch() : sketch_driver(nullptr), id_(0) {}
-
-        void setID(std::size_t id) {
-            id_ = id;
+        Sketch() {
+            graphical_objects_.resize(MAX_LAYERS);
         }
 
         virtual void update() {}
-        virtual void draw() {}
+        void draw();
+        void addObject(GraphicalObject* object, unsigned int layer = 0);
 
-        virtual ~Sketch() {};
+        virtual ~Sketch();
     };
 }

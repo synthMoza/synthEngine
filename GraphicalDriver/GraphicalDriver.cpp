@@ -14,8 +14,8 @@ GraphicalDriver::~GraphicalDriver() {
     }
 }
 
-void GraphicalDriver::draw(GraphicalObject* graphical_object) {
-    window_->draw(*(graphical_object->object_));
+void GraphicalDriver::drawObject(GraphicalObject& object) {
+    window_->draw(*(object.object_));
 }
 
 unsigned int GraphicalDriver::loadTexture(std::string path) {
@@ -30,16 +30,16 @@ Texture* GraphicalDriver::getTexture(unsigned int ID) {
     return textures_.at(ID);
 }
 
-void GraphicalAssistant::draw(GraphicalObject* graphical_object) {
-    graphical_driver->draw(graphical_object);
-}
-
 Vector2u GraphicalAssistant::getResolution() {
     return Application::getResolution();
 }
 
 unsigned int GraphicalAssistant::loadTexture(std::string path) {
     return graphical_driver->loadTexture(path);
+}
+
+void GraphicalAssistant::drawObject(GraphicalObject& object) {
+    graphical_driver->drawObject(object);
 }
 
 Texture* GraphicalAssistant::getTexture(unsigned int ID) {

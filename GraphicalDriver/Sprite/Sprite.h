@@ -1,7 +1,7 @@
 #pragma once
 
-#include "GraphicalDriver/GraphicalObject.h"
-#include "GraphicalDriver/GraphicalDriver.h"
+#include "../GraphicalObject.h"
+#include "../GraphicalDriver.h"
 
 namespace se {
 	// Sprite class that allows to draw any image loaded into the program

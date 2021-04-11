@@ -5,6 +5,8 @@
 #include <vector>
 
 namespace se {
+    class Sketch;
+
     // The driver class used for controlling sketches
     class SketchDriver {
         // The vector had been chosen because usually there are no a lot of sketches in the game to use list for fast removal
@@ -17,10 +19,14 @@ namespace se {
         // Adds the sketch to the driver
         void addSketch(Sketch* sketch);
 
+        // Draw all sketches
+        void drawObjects();
         // Updates all active sketches
         void updateSketches();
-        // Draws all sketches
-        void drawSketches();
+        // Deletes sketches that were marked to be deleted
+        void deleteSketches();
+
+        size_t getSketches();
 
         // Removes sketch from the driver
         void removeSketch(Sketch* sketch);

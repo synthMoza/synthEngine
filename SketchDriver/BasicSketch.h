@@ -10,7 +10,6 @@ namespace se {
         BasicSketch();
 
         void update() override;
-        void draw() override;
 
         virtual ~BasicSketch();
     };

@@ -1,10 +1,10 @@
 #pragma once
 
-#include "TimeDriver.h"
+#include "TimeDriver/TimeDriver.h"
 #include "SketchDriver/Sketch.h"
 #include "GraphicalDriver/Shapes/CircleShape.h"
-#include "InputDriver.h"
-#include "Sprite.h"
+#include "InputDriver/InputDriver.h"
+#include "GraphicalDriver/Sprite/Sprite.h"
 
 using namespace se;
 
@@ -15,7 +15,6 @@ public:
     GameSketch();
 
     void update() override;
-    void draw() override;
 
     virtual ~GameSketch();
 };

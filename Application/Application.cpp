@@ -11,6 +11,8 @@ Application::Application(unsigned int resolution_width, unsigned int resolution_
 }
 
 void Application::launch() {
+    sf::Event event;
+
     // Create sketch driver and initialize sketch assistant
     SketchDriver sketch_driver;
     SketchAssistant::sketch_driver_ = &sketch_driver;
@@ -33,7 +35,9 @@ void Application::launch() {
 
     time_driver.restartClock();
     while (window_->isOpen()) {
-        sf::Event event;
+        if (sketch_driver.getSketches() == 0) {
+            window_->close();
+        }
 
         while (window_->pollEvent(event)) {
             // Handle all events
@@ -48,12 +52,19 @@ void Application::launch() {
 
         window_->clear();
 
-        // Draw and update active sketches
+        // Update active sketches
         sketch_driver.updateSketches();
-        sketch_driver.drawSketches();
 
+        // Draw all objects on the screen
+        sketch_driver.drawObjects();
+
+        // Display all objects on the screen
         window_->display();
+        // Update state of keys
         input_driver.updateKeys();
+
+        // Delete skectes that are no longer needed
+        sketch_driver.deleteSketches();
 
         // Count the passed time
         time = time_driver.getElapsedTime();

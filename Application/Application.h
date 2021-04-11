@@ -5,8 +5,8 @@
 #include "../GraphicalDriver/GraphicalDriver.h"
 
 #include "../GraphicalLibrary.h"
-#include "../TimeDriver.h"
-#include "../InputDriver.h"
+#include "../TimeDriver/TimeDriver.h"
+#include "../InputDriver/InputDriver.h"
 
 namespace se {
     // The main class for launching the app

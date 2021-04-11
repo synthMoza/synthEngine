@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GraphicalLibrary.h"
+#include "../GraphicalLibrary.h"
 
 namespace se {
 	// The format to return time from TimeDriver class

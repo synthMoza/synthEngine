@@ -4,9 +4,13 @@
 #include "GraphicalObject.h"
 #include "../Utilities/Vector2.h"
 #include "../Application/Application.h"
-#include "../Texture.h"
+#include "../GraphicalDriver/Texture.h"
+
+#include <unordered_map>
 
 namespace se {
+    // Maximum number of layers
+    const int max_layers = 256;
     class Application;
 
     class GraphicalDriver {
@@ -15,8 +19,8 @@ namespace se {
     public:
         GraphicalDriver(sf::RenderWindow* window);
 
-        // Draw the object in the window
-        void draw(GraphicalObject* graphical_object);
+        // Draw all objects on the screen by layers
+        void drawObject(GraphicalObject& object);
         // Load the texture to the graphical driver
         // Returns the unique ID that will identify this texture
         unsigned int loadTexture(std::string path);
@@ -30,7 +34,7 @@ namespace se {
         static GraphicalDriver* graphical_driver;
     public:
         // Draw the given object
-        static void draw(GraphicalObject* graphical_object);
+        static void drawObject(GraphicalObject& object);
         // Get the current resolution of the opened window
         static Vector2u getResolution();
         // Load the texture to the graphical driver
