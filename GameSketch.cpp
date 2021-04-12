@@ -31,7 +31,7 @@ GameSketch::~GameSketch() {
 }
 
 void GameSketch::update() {
-    if (InputAssistant::isKeyPressed(Escape)) {
+    if (InputAssistant::isKeyPressed(keys::Escape)) {
         SketchAssistant::removeSketch(this);
         return;
     }
@@ -42,22 +42,22 @@ void GameSketch::update() {
     Vector2u resolution = GraphicalAssistant::getResolution();
     Vector2f tmp_pos = circle_shape_->getPosition();
 
-    if (InputAssistant::isKeyHeld(Right)) {
+    if (InputAssistant::isKeyHeld(keys::Right)) {
         circle_shape_->move({ velocity * delta_time, 0 });
     }
 
-    else if (InputAssistant::isKeyHeld(Left)) {
+    else if (InputAssistant::isKeyHeld(keys::Left)) {
         circle_shape_->move({ -velocity * delta_time, 0 });
     }
     
-    if (InputAssistant::isKeyHeld(Up)) {
+    if (InputAssistant::isKeyHeld(keys::Up)) {
         circle_shape_->move({0, -velocity * delta_time});
     }
-    else if (InputAssistant::isKeyHeld(Down)) {
+    else if (InputAssistant::isKeyHeld(keys::Down)) {
         circle_shape_->move({ 0, velocity * delta_time });
     }
 
-    if (InputAssistant::isMKeyHeld(RMouse)) {
+    if (InputAssistant::isMKeyHeld(mkeys::RMouse)) {
         uint8_t r = std::rand() % 256;
         uint8_t g = std::rand() % 256;
         uint8_t b = std::rand() % 256;

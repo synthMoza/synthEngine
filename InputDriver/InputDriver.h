@@ -3,10 +3,11 @@
 #include <vector>
 
 #include "../GraphicalLibrary.h"
+#include "../Utilities/Vector2.h"
 
 namespace se {
 	// The list of all keys on the keyboard 
-	enum keys {
+	enum class keys {
 		Unknown = -1, A = 0, B, C,
 		D, E, F, G,
 		H, I, J, K,
@@ -43,11 +44,11 @@ namespace se {
 		bool held; // true if the key is held, false if not
 
 		// Default constroctor for keyInfo
-		keyInfo() : code(Unknown), released(false), pressed(false), held(false) {}
+		keyInfo() : code(keys::Unknown), released(false), pressed(false), held(false) {}
 	};
 
 	// List of all mouse keys
-	enum mkeys {LMouse, RMouse, Middle, MKeyCount};
+	enum class mkeys {Unknown = -1, LMouse = 0, RMouse, Middle, MKeyCount};
 
 	struct mkeyInfo {
 		mkeys code; // the code of the mouse key
@@ -55,11 +56,11 @@ namespace se {
 		bool released; // true if the mouse key is released in this frame
 		bool pressed; // true if the mouse key is pressed in this frame
 
-		mkeyInfo() : code(LMouse), released(false), pressed(false), held(false) {}
+		mkeyInfo() : code(mkeys::Unknown), released(false), pressed(false), held(false) {}
 	};
 
-	const int keys_number = keys::KeyCount;
-	const int mkeys_number = mkeys::MKeyCount;
+	const int keys_number = static_cast<unsigned int>(keys::KeyCount);
+	const int mkeys_number = static_cast<unsigned int>(mkeys::MKeyCount);
 
 	// The class to control keyboard and mouse
 	class InputDriver {
@@ -91,6 +92,9 @@ namespace se {
 		// Returns true if the key is released
 		bool isKeyReleased(keys key);
 
+		// Return the current mouse position
+		Vector2i getMousePosition();
+
 		// Returns true if the mkey is held
 		bool isMKeyHeld(mkeys mkey);
 		// Returns true if the mkey is pressed
@@ -109,6 +113,8 @@ namespace se {
 		static bool isKeyPressed(keys key);
 		// Returns true if the key is released
 		static bool isKeyReleased(keys key);
+		// Return the current mouse position
+		static Vector2i getMousePosition();
 
 		// Returns true if the mkey is held
 		static bool isMKeyHeld(mkeys mkey);

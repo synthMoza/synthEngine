@@ -17,19 +17,26 @@ InputDriver::InputDriver() {
 }
 
 void InputDriver::updateKeys() {
+	int key_i = 0;
+	int mkey_i = 0;
+
 	// Unpress and unrelease all keys from the previous frame
 	for (auto& key : keys_unpress) {
-		keys_info.at(key).pressed = false;
+		key_i = static_cast<unsigned int>(key);
+		keys_info.at(key_i).pressed = false;
 	}
 	for (auto& key : keys_unrelease) {
-		keys_info.at(key).released = false;
+		key_i = static_cast<unsigned int>(key);
+		keys_info.at(key_i).released = false;
 	}
 	// Unpress and unrelease all mouse keys from the previous frame
 	for (auto& mkey : mkeys_unpress) {
-		mkeys_info.at(mkey).pressed = false;
+		mkey_i = key_i = static_cast<unsigned int>(mkey);
+		mkeys_info.at(mkey_i).pressed = false;
 	}
 	for (auto& mkey : mkeys_unrelease) {
-		mkeys_info.at(mkey).released = false;
+		mkey_i = key_i = static_cast<unsigned int>(mkey);
+		mkeys_info.at(mkey_i).released = false;
 	}
 }
 
@@ -70,25 +77,36 @@ void InputDriver::handleEvent(sf::Event& event) {
 }
 
 bool InputDriver::isKeyHeld(keys key) {
-	return keys_info.at(key).held;
+	int key_i = static_cast<unsigned int>(key);
+	return keys_info.at(key_i).held;
 }
 
 bool InputDriver::isKeyPressed(keys key) {
-	return keys_info.at(key).pressed;
+	int key_i = static_cast<unsigned int>(key);
+	return keys_info.at(key_i).pressed;
 }
 
 bool InputDriver::isKeyReleased(keys key) {
-	return keys_info.at(key).released;
+	int key_i = static_cast<unsigned int>(key);
+	return keys_info.at(key_i).released;
 }
 
 bool InputDriver::isMKeyHeld(mkeys mkey) {
-	return mkeys_info.at(mkey).held;
+	int mkey_i = static_cast<unsigned int>(mkey);
+	return mkeys_info.at(mkey_i).held;
 }
 bool InputDriver::isMKeyPressed(mkeys mkey) {
-	return mkeys_info.at(mkey).pressed;
+	int mkey_i = static_cast<unsigned int>(mkey);
+	return mkeys_info.at(mkey_i).pressed;
 }
 bool InputDriver::isMKeyReleased(mkeys mkey) {
-	return mkeys_info.at(mkey).released;
+	int mkey_i = static_cast<unsigned int>(mkey);
+	return mkeys_info.at(mkey_i).released;
+}
+
+Vector2i InputDriver::getMousePosition() {
+	sf::Vector2i pos = sf::Mouse::getPosition();
+	return Vector2i{pos.x, pos.y};
 }
 
 // Initialize static variable for input assistant
@@ -112,4 +130,8 @@ bool InputAssistant::isMKeyPressed(mkeys mkey) {
 }
 bool InputAssistant::isMKeyReleased (mkeys mkey) {
 	return input_driver->isMKeyReleased(mkey);
+}
+
+Vector2i InputAssistant::getMousePosition() {
+	return input_driver->getMousePosition();
 }
