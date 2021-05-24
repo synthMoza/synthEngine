@@ -15,8 +15,8 @@ size_t SketchDriver::getSketches() {
     return sketches_.size();
 }
 
-void SketchDriver::drawObjects() {
-    for (auto sketch : sketches_) {
+void SketchDriver::collectObjects() {
+    for (auto&& sketch : sketches_) {
         sketch->draw();
     }
 }

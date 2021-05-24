@@ -54,9 +54,11 @@ void Application::launch() {
 
         // Update active sketches
         sketch_driver.updateSketches();
+        // Collect all objects
+        sketch_driver.collectObjects();
 
         // Draw all objects on the screen
-        sketch_driver.drawObjects();
+        graphical_driver.drawObjects();
 
         // Display all objects on the screen
         window_->display();
@@ -65,15 +67,18 @@ void Application::launch() {
 
         // Delete skectes that are no longer needed
         sketch_driver.deleteSketches();
+        // Clear objects
+        graphical_driver.clearObjects();
 
         // Count the passed time
         time = time_driver.getElapsedTime();
+        //std::cout << "Time: " << time << std::endl;
         time_driver.setFrameTime(time - old_time);
         old_time = time;
 
         if (old_time >= 1000000) {
             // One second passed
-            std::cout << "FPS: " << frames << std::endl;
+            // std::cout << "FPS: " << frames << std::endl;
             frames = 0;
             old_time = 0;
             time = 0;

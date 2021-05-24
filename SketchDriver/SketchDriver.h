@@ -19,8 +19,8 @@ namespace se {
         // Adds the sketch to the driver
         void addSketch(Sketch* sketch);
 
-        // Draw all sketches
-        void drawObjects();
+        // Add objects from each sketch
+        void collectObjects();
         // Updates all active sketches
         void updateSketches();
         // Deletes sketches that were marked to be deleted

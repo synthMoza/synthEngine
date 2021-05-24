@@ -4,7 +4,7 @@
 #include "../Utilities/Vector2.h"
 
 namespace se {
-    // Base class for all objects in the game that can be drawn and updated. Determines
+    // Base class for all objects in the game that can be drawn, resized and updated. Determines
     // basic interface for such objects. All such objects should be inherited from this base class.
 
     // TODO
@@ -12,6 +12,7 @@ namespace se {
     protected:
         sf::Drawable* object_; // the pointer to SFML drawable object for GraphicalDriver
         sf::Transformable* size_object_; // the pointer to SFML transformable object for GraphicalDriver
+        std::size_t layer_; // the layer on which the object will be drawn
     public:
         GraphicalObject();
 

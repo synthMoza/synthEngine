@@ -14,5 +14,7 @@ namespace se {
 		void setTexture(unsigned int ID);
 
 		virtual ~Sprite();
+
+		friend GraphicalDriver;
 	};
 }

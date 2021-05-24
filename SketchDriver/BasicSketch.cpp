@@ -16,3 +16,5 @@ void BasicSketch::update() {
     SketchAssistant::addSketch(new GameSketch);
     SketchAssistant::removeSketch(this);
 }
+
+void BasicSketch::draw() {}

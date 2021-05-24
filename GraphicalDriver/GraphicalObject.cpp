@@ -3,7 +3,7 @@
 using namespace se;
 
 GraphicalObject::GraphicalObject() : 
-	object_ (nullptr), size_object_ (nullptr) {}
+	object_ (nullptr), size_object_ (nullptr), layer_ (0) {}
 
 GraphicalObject::~GraphicalObject() {}
 

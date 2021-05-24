@@ -3,7 +3,7 @@
 using namespace se;
 
 int main() {
-    Application app(1200, 800, "Application");
+    Application app(600, 800, "Application");
     app.launch();
 
     return 0;

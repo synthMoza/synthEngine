@@ -10,21 +10,14 @@ namespace se {
     // Forward declaration of the skecth driver
     class SketchDriver;
 
-    const int MAX_LAYERS = 128;
-
-    // The scetch class for designing the certain part of the application that
-    // contains related objects and methods
+    // The scetch class for designing the certain part of the application
     class Sketch {
-        // Vector of all graphical objects of this sketch
-        std::vector<std::vector<GraphicalObject*>> graphical_objects_;
     public:
-        Sketch() {
-            graphical_objects_.resize(MAX_LAYERS);
-        }
+        Sketch() {}
 
-        virtual void update() {}
-        void draw();
-        void addObject(GraphicalObject* object, unsigned int layer = 0);
+        // Update and draw the objects of this sketch
+        virtual void update() = 0;
+        virtual void draw() = 0;
 
         virtual ~Sketch();
     };

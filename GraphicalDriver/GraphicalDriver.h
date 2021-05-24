@@ -10,17 +10,23 @@
 
 namespace se {
     // Maximum number of layers
-    const int max_layers = 256;
+    const int max_layers = 32;
     class Application;
 
     class GraphicalDriver {
         sf::RenderWindow* window_; // the pointer to the opened window
         std::vector<Texture*> textures_; // the vector of all opened textures
+        // Vector of layers with objects to be drawn during this frame
+        std::vector<std::vector<GraphicalObject*>> to_draw_;
     public:
         GraphicalDriver(sf::RenderWindow* window);
 
         // Draw all objects on the screen by layers
-        void drawObject(GraphicalObject& object);
+        void drawObjects();
+        // Add object to be the vector
+        void addObject(GraphicalObject* object);
+        // Clears all objects from the vector
+        void clearObjects();
         // Load the texture to the graphical driver
         // Returns the unique ID that will identify this texture
         unsigned int loadTexture(std::string path);
