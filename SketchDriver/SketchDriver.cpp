@@ -1,5 +1,6 @@
 #include "SketchDriver.h"
 #include "BasicSketch.h"
+#include "Sketch.h"
 
 using namespace se;
 
@@ -7,8 +8,11 @@ using namespace se;
 SketchDriver* SketchAssistant::sketch_driver_ = nullptr;
 
 // Default constructor for the sketch driver, creates the first empty scetch
-SketchDriver::SketchDriver() {
-    addSketch(new BasicSketch);
+SketchDriver::SketchDriver(Sketch* start_sketch) {
+    if (start_sketch == nullptr)
+        throw std::runtime_error("Nullptr to the start sketch!");
+
+    addSketch(start_sketch);
 }
 
 size_t SketchDriver::getSketches() {

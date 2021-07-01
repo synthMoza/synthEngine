@@ -6,15 +6,27 @@ using namespace se;
 Vector2u Application::resolution_ = Vector2u{0, 0};
 
 Application::Application(unsigned int resolution_width, unsigned int resolution_height, const std::string& title) :
-        window_ (new sf::RenderWindow{sf::VideoMode{resolution_width, resolution_height}, title}) {
+        window_ (new sf::RenderWindow{sf::VideoMode{resolution_width, resolution_height}, title}),
+        mode_ (0),
+        title_ (title) {
     resolution_ = Vector2u{resolution_width, resolution_height};
 }
 
-void Application::launch() {
+void Application::changeMode(int mode) {
+    mode_ = mode;
+    window_->create(sf::VideoMode{resolution_.x_, resolution_.y_}, title_, mode_);
+}
+
+void Application::changeTitle(const std::string& string) {
+    title_ = string;
+    window_->setTitle(title_);
+}
+
+void Application::launch(Sketch* sketch) {
     sf::Event event;
 
     // Create sketch driver and initialize sketch assistant
-    SketchDriver sketch_driver;
+    SketchDriver sketch_driver(sketch);
     SketchAssistant::sketch_driver_ = &sketch_driver;
 
     // Create graphical driver and initialize graphical assistant

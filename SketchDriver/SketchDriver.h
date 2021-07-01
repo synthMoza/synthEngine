@@ -1,7 +1,6 @@
 #pragma once
 
-#include "Sketch.h"
-
+// #include "Sketch.h"
 #include <vector>
 
 namespace se {
@@ -13,8 +12,8 @@ namespace se {
         std::vector<Sketch*> sketches_; // the vector of all scathes in the game
         std::vector<Sketch*> to_delete_; // sketches to be deleted before updating sketches
     public:
-        // Default constructor for the sketch driver, creates the first empty scetch
-        SketchDriver();
+        // Default constructor for the sketch driver, creates the first given sketch
+        SketchDriver(Sketch* start_sketch);
 
         // Adds the sketch to the driver
         void addSketch(Sketch* sketch);
