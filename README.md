@@ -5,7 +5,7 @@ Everything you need to include is the ```Engine.h``` header - it has all needed 
 # Main Structure
 As the engine development is still in progress, it has no full guide yet, but still I can give a quick review on this engine. The structure is shown on this graph:
 
-<a href="https://ibb.co/CB90ZQb"><img src="https://i.ibb.co/7vpy5Kn/synth-Engine-1.png" alt="synth-Engine-1" border="0"></a>
+<a href="https://ibb.co/g632zMH"><img src="https://i.ibb.co/0Qc7hj8/synth-Engine-2.png" alt="synth-Engine-2" border="0"></a>
 
 The program starts by creating object of type ```Application``` and calling the method ```launch()```. When creating this object, you have to specify the resolution and the title of the window to be opened. Also, you can change the mode (like resizable, fullscreen and etc). When launching the application, the pointer to the start sketch must be provided. 
 
