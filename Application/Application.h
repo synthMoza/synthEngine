@@ -23,14 +23,20 @@ namespace se {
 
     // The main class for launching the app
     class Application {
+        // The pointer to the main window 
+        sf::RenderWindow* window_;
         // Title of the application window
         std::string title_;
         // Current mode of this application window
         int mode_;
         // The resolution of the window
         static Vector2u resolution_;
-        // The pointer to the main window 
-        sf::RenderWindow* window_;
+
+        // Drivers
+        SketchDriver sketch_driver_;
+        GraphicalDriver graphical_driver_;
+        TimeDriver time_driver_;
+        InputDriver input_driver_;
     public:
         Application(unsigned int resolution_width, unsigned int resolution_height, const std::string& title);
         
@@ -43,7 +49,7 @@ namespace se {
         // Change the title of the application window
         void changeTitle(const std::string& string);
         // Launch the application - the main loop of the application with the given sketch
-        void launch(Sketch* sketch);
+        void launch();
 
         ~Application();
     };

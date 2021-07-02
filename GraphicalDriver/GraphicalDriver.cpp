@@ -1,5 +1,6 @@
 #include "GraphicalDriver.h"
 #include "Sprite/Sprite.h"
+#include "../Application/Application.h"
 
 using namespace se;
 

@@ -1,5 +1,12 @@
 #include "GameSketch.h"
 
+#include "GraphicalDriver/Shapes/CircleShape.h"
+#include "InputDriver/InputDriver.h"
+#include "TimeDriver/TimeDriver.h"
+#include "SketchDriver/SketchDriver.h"
+
+#include "Rect.h"
+
 using namespace se;
 
 const int TILE_SIZE = 120;
@@ -38,7 +45,6 @@ void GameSketch::loadTextures() {
 GameSketch::GameSketch() {
     // Background
     unsigned int id = GraphicalAssistant::loadTexture("Game_Sprites/background.png");
-    // std::cout << "BACKGROUND ID: " << id << std::endl;
     background_ = new Sprite;
     background_->setTexture(id);
     background_->setPosition({0, 0});
@@ -63,7 +69,7 @@ GameSketch::GameSketch() {
     for (int i = 0; i < 4; ++i) {
         for (int j = 0; j < 4; ++j) {
             tiles_[i][j] = new Sprite;
-            tiles_[i][j]->setScale({0.25, 0.25});
+            tiles_[i][j]->setScale({ 0.25, 0.25 });
         }
     }
 

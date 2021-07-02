@@ -3,7 +3,6 @@
 #include "../GraphicalLibrary.h"
 #include "GraphicalObject.h"
 #include "../Utilities/Vector2.h"
-#include "../Application/Application.h"
 #include "../GraphicalDriver/Texture.h"
 
 #include <unordered_map>

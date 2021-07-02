@@ -3,7 +3,6 @@
 // File to be included, contains each component of the engine
 
 // Sketches
-#include "SketchDriver/BasicSketch.h"
 #include "SketchDriver/Sketch.h"
 #include "SketchDriver/SketchDriver.h"
 

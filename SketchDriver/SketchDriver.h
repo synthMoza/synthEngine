@@ -12,8 +12,8 @@ namespace se {
         std::vector<Sketch*> sketches_; // the vector of all scathes in the game
         std::vector<Sketch*> to_delete_; // sketches to be deleted before updating sketches
     public:
-        // Default constructor for the sketch driver, creates the first given sketch
-        SketchDriver(Sketch* start_sketch);
+        // Default constructor for the sketch driver
+        SketchDriver();
 
         // Adds the sketch to the driver
         void addSketch(Sketch* sketch);
