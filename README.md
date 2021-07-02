@@ -7,9 +7,9 @@ As the engine development is still in progress, it has no full guide yet, but st
 
 <a href="https://ibb.co/g632zMH"><img src="https://i.ibb.co/0Qc7hj8/synth-Engine-2.png" alt="synth-Engine-2" border="0"></a>
 
-The program starts by creating object of type ```Application``` and calling the method ```launch()```. When creating this object, you have to specify the resolution and the title of the window to be opened. Also, you can change the mode (like resizable, fullscreen and etc). When launching the application, the pointer to the start sketch must be provided. 
+The program starts by creating object of type ```Application``` and calling the method ```launch()```. When creating this object, you have to specify the resolution and the title of the window to be opened. Also, you can change the mode (like resizable, fullscreen and etc). Before launching the application, add the start sketch using SketchAssistant (otherwise the application would be closed immediately). 
 
-<a href="https://ibb.co/nsqzZf2"><img src="https://i.ibb.co/d0sG169/start-app.png" alt="start-app" border="0"></a>
+<a href="https://ibb.co/ydtfhcc"><img src="https://i.ibb.co/Nt5V1dd/start-app.png" alt="start-app" border="0"></a>
 
   The main concept is "Sketch" - something like a drawing sketch. You create a sketch and include some objects into it, write the rules for them to update and etc,
 and then push it into the SketchManager using SketchAssistant - and everything will be shown in the window. Also you can create several sketches that will work
